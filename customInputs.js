@@ -1,4 +1,8 @@
-const custom = {
+{
+  options: {
+      builder: {
+          builder: {
+              custom: {
   title: "Fields Pool",
   weight: 10,
   components: {
@@ -265,6 +269,6 @@ const custom = {
       },
     },
   },
-};
+}}}}};
 
 export default custom;
