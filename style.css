@@ -4,3 +4,6 @@ input.form-control {
 .btn.btn-primary {
   background-color: red !important;
 }
+.btn {
+  padding: 0 !important;
+}
