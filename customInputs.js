@@ -75,11 +75,33 @@
     options: {
       builder: {
         builder: {
-          yourCustomGroup: {
-            title: "Your Custom Group",
-            weight: 0,
-            default: true,
-            components: customComponents,
+          custom: {
+            title: "new custom",
+            weight: 10,
+            components: {
+              firstName: {
+                title: "First Name",
+                key: "firstName",
+                icon: "terminal",
+                schema: {
+                  label: "First Name",
+                  type: "textfield",
+                  key: "firstName",
+                  input: true,
+                },
+              },
+              lastName: {
+                title: "Last Name",
+                key: "lastName",
+                icon: "terminal",
+                schema: {
+                  label: "Last Name",
+                  type: "textfield",
+                  key: "lastName",
+                  input: true,
+                },
+              },
+            },
           },
         },
       },
