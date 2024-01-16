@@ -2,23 +2,69 @@
   "use strict";
 
   var customComponents = {
-    customTextfield: {
-      title: "Custom Textfield",
-      icon: "text",
+    Age: {
+      title: "Age",
+      key: "age",
+      icon: "check",
       schema: {
-        type: "textfield",
-        key: "customTextfield",
-        label: "Custom Textfield",
-        placeholder: "Enter your text",
+        label: "Age",
+        applyMaskOn: "change",
+        mask: false,
+        tableView: true,
+        delimiter: false,
+        requireDecimal: false,
+        inputFormat: "plain",
+        truncateMultipleSpaces: false,
+        key: "age",
+        conditional: {
+          show: true,
+          conjunction: "all",
+          conditions: [
+            {
+              component: "name",
+              operator: "isNotEmpty",
+            },
+          ],
+        },
+        type: "number",
+        input: true,
       },
     },
-    customCheckbox: {
-      title: "Custom Checkbox",
-      icon: "check-square",
+    Accept: {
+      title: "Accept",
+      key: "accept",
+      icon: "check",
       schema: {
-        type: "checkbox",
-        key: "customCheckbox",
-        label: "Custom Checkbox",
+        label: "Accept Income",
+        optionsLabelPosition: "right",
+        inline: true,
+        tableView: false,
+        defaultValue: "accept",
+        values: [
+          {
+            label: "Accept",
+            value: "accept",
+            shortcut: "",
+          },
+          {
+            label: "Refuse",
+            value: "refuse",
+            shortcut: "",
+          },
+        ],
+        key: "acceptIncome",
+        conditional: {
+          show: true,
+          conjunction: "all",
+          conditions: [
+            {
+              component: "calculatedIncome",
+              operator: "isNotEmpty",
+            },
+          ],
+        },
+        type: "radio",
+        input: true,
       },
     },
   };
