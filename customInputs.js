@@ -79,7 +79,7 @@
             title: "Your Custom Group",
             weight: 0,
             default: true,
-            components: ["customTextfield", "customCheckbox"],
+            components: customComponents,
           },
         },
       },
