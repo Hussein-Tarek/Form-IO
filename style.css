@@ -111,3 +111,7 @@ a[href="https://help.form.io/userguide/form-building/form-components#text-field"
   background-color: #fd350d;
   border-color: #fd350d;
 }
+.test {
+  height: 100px !important;
+  background-color: black;
+}
