@@ -550,47 +550,50 @@
                   tableView: false,
                 },
               },
-              firstName: {
-                title: "First Name",
-                key: "firstName",
-                icon: "terminal",
+              fetchDraft: {
+                title: "Fetch Draft",
+                key: "fetchDraft",
                 schema: {
-                  label: "First Name",
-                  type: "textfield",
-                  key: "firstName",
+                  label: "Data Source",
+                  persistent: "client-only",
+                  trigger: {
+                    init: true,
+                    server: false,
+                  },
+                  dataSrc: "url",
+                  fetch: {
+                    url: "http://localhost:4000/draft/{{user._id}}{{form._id}}",
+                    method: "get",
+                    headers: [
+                      {
+                        key: "",
+                        value: "",
+                      },
+                    ],
+                    mapFunction:
+                      "data = responseData.data;\nconst res = Object.entries(responseData.data);\nres.map(val=>{\n  const x = instance.root.getComponent(val[0]);\n  if(x)\n  x.setValue(val[1])});\n",
+                    forwardHeaders: false,
+                    authenticate: false,
+                  },
+                  allowCaching: true,
+                  key: "dataSource",
+                  type: "datasource",
                   input: true,
+                  tableView: false,
                 },
               },
-              lastName: {
-                title: "Last Name",
-                key: "lastName",
-                icon: "terminal",
+              saveDraft: {
+                title: "Save Draft",
+                key: "saveDraft",
                 schema: {
-                  label: "Last Name",
-                  type: "textfield",
-                  key: "lastName",
-                  input: true,
-                },
-              },
-              email: {
-                title: "Email",
-                key: "email",
-                icon: "at",
-                schema: {
-                  label: "Email",
-                  type: "email",
-                  key: "email",
-                  input: true,
-                },
-              },
-              phoneNumber: {
-                title: "Mobile Phone",
-                key: "mobilePhone",
-                icon: "phone-square",
-                schema: {
-                  label: "Mobile Phone",
-                  type: "phoneNumber",
-                  key: "mobilePhone",
+                  label: "Save",
+                  action: "custom",
+                  showValidations: false,
+                  tableView: false,
+                  key: "save",
+                  type: "button",
+                  custom:
+                    'const requestOptions = {\r\n  method: "POST",\r\n  headers: {\r\n    "Content-Type": "application/json",\r\n  },\r\n  body: JSON.stringify({ data, id:`${user._id}${form._form._id}`}),\r\n};\r\n\r\nfetch(`http://localhost:4000/draft/${user._id}${form._form._id}`).then(() =>{\r\n  fetch(`http://localhost:4000/draft/${user._id}${form._form._id}`, {\r\n  method: "PATCH",\r\n  headers: {\r\n    "Content-Type": "application/json",\r\n  },\r\n  body: JSON.stringify({data}),\r\n})\r\n      .then((response) => {\r\n        if (!response.ok) {\r\n          throw new Error(`HTTP error! Status: ${response.status}`);\r\n        }\r\n        return response.json();\r\n      })\r\n      .then((data) => {\r\n        console.log(data);\r\n      })\r\n      .catch((error) => {\r\n        fetch(\'http://localhost:4000/draft\',requestOptions)\r\n        console.error("Error:", error);\r\n      });\r\n});\r\n ',
                   input: true,
                 },
               },
