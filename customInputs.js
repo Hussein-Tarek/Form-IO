@@ -438,11 +438,11 @@
       },
       form: {
         evalContext: {
-          print: function(input) {
-            console.log(input)
-          }
-        }
-      }
+          print: function (input) {
+            console.log(input);
+          },
+        },
+      },
     },
     templates: {},
   });
