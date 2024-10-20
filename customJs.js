@@ -1,8 +1,7 @@
-// addNumbers.js
 window.sayHi = function (x, y) {
   console.log("hi", x, y);
 };
-window.selectSearch = function (instance, component) {
+window.selectSearch2 = function (instance, component) {
   console.log(instance, component);
   const searchInput = instance.choices?.input.element;
 
