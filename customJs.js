@@ -1,7 +1,12 @@
 window.selectSearch2 = function (instance, component) {
-  console.log({ instance }, { component }, "language", instance.i18n.lng);
+  console.log(
+    { instance },
+    { component },
+    "language",
+    instance.options.i18n.lng
+  );
 
-  if (instance.i18n.lng === "en") {
+  if (instance.options.i18n.lng === "en") {
     component.template = "<span>{{ item.nameEn }}</span>";
   }
   const searchInput = instance.choices?.input.element;
